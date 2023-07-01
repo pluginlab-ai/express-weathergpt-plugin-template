@@ -1,4 +1,4 @@
-import axios from "axios";
+import fetch from "node-fetch";
 
 export const getWeatherData = async (location) => {
     const API_KEY = process.env.WEATHER_API_KEY;
@@ -9,8 +9,8 @@ export const getWeatherData = async (location) => {
         );
     }
 
-    const res = await axios.get(
+    const res = await fetch(
         `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}&aqi=no`,
     );
-    return res.data;
+    return res.json();
 }
